@@ -1,4 +1,4 @@
-import pyautogui # Needs to be installed
+import pyautogui # Needs to be installed: python3 -m pip install pyautogui
 import webbrowser
 import time
 
