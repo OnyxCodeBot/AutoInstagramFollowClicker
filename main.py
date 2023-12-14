@@ -36,7 +36,7 @@ def instagrammfollowautomation(loopstopvar, sleepbetweenclicks, web_url, scroll)
                     clickfollowbutton(usericon, sleepbetweenclicks)
                 except:
                     loopstopvar = False
-                    errormessage = "Button Not Found Error"
+                    errormessage = "Error: Button Not Found"
 
     if errormessage:
         print(errormessage)
@@ -47,13 +47,14 @@ def instagrammfollowautomation(loopstopvar, sleepbetweenclicks, web_url, scroll)
 print("--------- INSTAGRAM FOLLOW AUTOMATION ---------")
 print("This is a Application using the Python library 'pyautogui' to automate the process")
 print("of following the Followers of a specific Instagram account.")
-print('---')
-print('---')
+print('')
+print('')
 print("IMPORTANT: If you are using this on windows you may need to open the code and change the 'clickfollowbutton' function")
 print("           so that the 'buttonlocationvar[0]' and 'buttonlocationvar[1]' are no longer divided by two.")
 print("           If the 'Follow Button' should for some reason change it's color then change the image 'this.png' to match the new look ")
-print('---')
-print('---')
+print('')
+print('')
+
 goOn = True
 delay = int(input("How much time is there before the next button is clicked?: "))
 url = input("Input the path to the Followers of the Instagram account: ")
