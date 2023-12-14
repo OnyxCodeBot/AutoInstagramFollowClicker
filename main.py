@@ -1,4 +1,4 @@
-import pyautogui # Needs to be installed: python3 -m pip install pyautogui
+import pyautogui # Needs to be installed
 import webbrowser
 import time
 
@@ -22,16 +22,17 @@ def instagrammfollowautomation(loopstopvar, sleepbetweenclicks, web_url, scroll)
 
         while loopstopvar is True:
             try:
-                usericon = pyautogui.locateOnScreen('/search_image/this.png')
+                usericon = pyautogui.locateOnScreen("search_image/this.png")
                 clickfollowbutton(usericon, sleepbetweenclicks)
             except:
                 # move the mouse left and scroll when check for button again if not found set goOn to False
                 pyautogui.moveTo(973, 567)
-                pyautogui.scroll(-scroll)
+                scrollInt = int(scroll)
+                pyautogui.scroll(-scrollInt)
                 print("try to scroll")
                 pyautogui.sleep(sleepbetweenclicks)
                 try:
-                    usericon = pyautogui.locateOnScreen('/search_image/this.png')
+                    usericon = pyautogui.locateOnScreen('search_image/this.png')
                     clickfollowbutton(usericon, sleepbetweenclicks)
                 except:
                     loopstopvar = False
@@ -59,3 +60,4 @@ url = input("Input the path to the Followers of the Instagram account: ")
 scrolldistance = input("How far should it scroll down if it doesn't find a button?(Standart ist 8): ")
 
 instagrammfollowautomation(goOn, delay, url, scrolldistance)
+
