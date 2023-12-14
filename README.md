@@ -1,7 +1,7 @@
 # AutoInstagramFollowClicker
 Automates the process of following every Follower of a specific Instagram account using the pyautogui library
 
-Install the pyautogui library
+Install the pyautogui library before starting
 
 Remember the following:
 1. After executing the main file you will be asked to put in some parameters, the Instagram acount url should look like this: https://www.instagram.com/AcountName/followers/
