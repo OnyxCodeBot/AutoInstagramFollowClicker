@@ -19,3 +19,7 @@ Remember the following:
    </code>
    </pre>
    For some reason the 'pyautogui.locateOnScreen()' function returnes the x and y coordinates multiplied by 2 so i needed to manually divide them 
+
+
+Known Errors and Limitations:
+- If the first valid Follow-Button is not visible even after the list was scrolled down the program will end
