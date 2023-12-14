@@ -18,3 +18,4 @@ Remember the following:
     time.sleep(betweenclicks)
    </code>
    </pre>
+   for some reason the 'pyautogui.locateOnScreen()' function returnes the x and y coordinates multiplied by 2 so i needed to manually divide them 
