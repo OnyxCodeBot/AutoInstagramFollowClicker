@@ -1,6 +1,44 @@
-import pyautogui # Needs to be installed
+import pyautogui
+from threading import *
+import tkinter
 import webbrowser
 import time
+from random import randrange
+
+
+
+
+root = tkinter.Tk()
+root.title("INSTAGRAM FOLLOW AUTOMATION")
+root.geometry('500x500')
+
+def threading():
+    t1 = Thread(target=update_textbox)
+    t2 = Thread(target=clickfollowbutton)
+    t3 = Thread(target=clickfollowbuttonwindows)
+    t4 = Thread(target=instagrammfollowautomation)
+
+    t1.start()
+    t2.start()
+    t3.start()
+    t4.start()
+
+    if t1.start():
+        print("t1 has started")
+
+def testthread():
+    t5 = Thread(target=showvalue)
+    t5.start()
+
+def disableentrythread():
+   t6 = Thread(target=disablefield)
+   t6.start()
+
+def update_textbox(textbox, data):
+    textbox.config(state=tkinter.NORMAL)
+    textbox.insert(tkinter.END, "\n"+str(data))
+    textbox.config(state=tkinter.DISABLED)
+    textbox.see(tkinter.END)
 
 
 def clickfollowbutton(buttonlocationvar, betweenclicks):
@@ -8,57 +46,118 @@ def clickfollowbutton(buttonlocationvar, betweenclicks):
     y = buttonlocationvar[1] / 2
     pyautogui.moveTo(x, y)
     pyautogui.click(x, y, 1)
-    time.sleep(betweenclicks)
+    update_textbox(statusfield, "Found a Button!")
+    time.sleep(int(betweenclicks))
 
 
-def instagrammfollowautomation(loopstopvar, sleepbetweenclicks, web_url, scroll):
-    start_status = input("Please type in 'start' if you are ready: ")
-    if start_status == "start":
-        print("Starting....")
-        webbrowser.open(web_url)
-        print("Waiting for the site to load... 10s")
-        time.sleep(8)
-        pyautogui.moveTo(794, 416)
+def clickfollowbuttonwindows(buttonlocationvar, betweenclicks):
+    x = buttonlocationvar[0]
+    y = buttonlocationvar[1]
+    pyautogui.moveTo(x, y)
+    pyautogui.click(x, y, 1)
+    update_textbox(statusfield, "Found a Button!")
+    time.sleep(int(betweenclicks))
 
-        while loopstopvar is True:
+
+def instagrammfollowautomation():
+    loopstopvar = True
+    random = israndom.get()
+    if random == 0:
+      sleepbetweenclicks = delayInput.get()
+    else:
+      randomvalue = randrange(4, 7)
+      sleepbetweenclicks = randomvalue
+
+    web_url = urlInput.get()
+    scroll = scrolldistanceInput.get()
+    operationsystem = opsystemInput.get()
+
+
+    update_textbox(statusfield, "Starting...")
+    webbrowser.open(web_url + "/followers")
+    update_textbox(statusfield, "Waiting for Site to load... 10sec")
+    time.sleep(8)
+    pyautogui.moveTo(794, 416)
+
+    while loopstopvar is True:
+        try:
+            update_textbox(statusfield, "Searching for Button1...")
+            usericon = pyautogui.locateOnScreen("search_image/this.png")
+            if operationsystem == "Mac":
+              clickfollowbutton(usericon, sleepbetweenclicks)
+            else:
+              clickfollowbuttonwindows(usericon, sleepbetweenclicks)
+        except:
+            # move the mouse left and scroll when check for button again if not found set goOn to False
+            pyautogui.moveTo(973, 567)
+            scrollInt = int(scroll)
+            pyautogui.scroll(-scrollInt)
+            update_textbox(statusfield, "Trying to scroll...")
+            pyautogui.sleep(int(sleepbetweenclicks))
             try:
-                usericon = pyautogui.locateOnScreen("search_image/this.png")
-                clickfollowbutton(usericon, sleepbetweenclicks)
+                update_textbox(statusfield, "Searching for Button2...")
+                usericon2 = pyautogui.locateOnScreen('search_image/this.png')
+                if operationsystem == "Mac":
+                    clickfollowbutton(usericon2, sleepbetweenclicks)
+                else:
+                    clickfollowbuttonwindows(usericon2, sleepbetweenclicks)
             except:
-                # move the mouse left and scroll when check for button again if not found set goOn to False
-                pyautogui.moveTo(973, 567)
-                scrollInt = int(scroll)
-                pyautogui.scroll(-scrollInt)
-                print("try to scroll")
-                pyautogui.sleep(sleepbetweenclicks)
-                try:
-                    usericon = pyautogui.locateOnScreen('search_image/this.png')
-                    clickfollowbutton(usericon, sleepbetweenclicks)
-                except:
-                    loopstopvar = False
-                    errormessage = "Error: Button Not Found"
+                loopstopvar = False
+                errormessage = "Error: Button Not Found"
 
     if errormessage:
-        print(errormessage)
+        update_textbox(statusfield, errormessage)
     else:
-        print("There is no Error")
+        update_textbox(statusfield, errormessage)
 
 
-print("--------- INSTAGRAM FOLLOW AUTOMATION ---------")
-print("This is a Application using the Python library 'pyautogui' to automate the process")
-print("of following the Followers of a specific Instagram account.")
-print('')
-print('')
-print("IMPORTANT: If you are using this on windows you may need to open the code and change the 'clickfollowbutton' function")
-print("           so that the 'buttonlocationvar[0]' and 'buttonlocationvar[1]' are no longer divided by two.")
-print("           If the 'Follow Button' should for some reason change it's color then change the image 'this.png' to match the new look ")
-print('')
-print('')
+def showvalue():
+    random = israndom.get()
+    if random == 0:
+      sleepbetweenclicks = delayInput.get()
+      print(sleepbetweenclicks)
+    else:
+      randomvalue = randrange(4, 7)
+      sleepbetweenclicks = randomvalue
+      print("here")
+      print(sleepbetweenclicks)
 
-goOn = True
-delay = int(input("How much time is there before the next button is clicked?: "))
-url = input("Input the path to the Followers of the Instagram account: ")
-scrolldistance = input("How far should it scroll down if it doesn't find a button?(Standart ist 8): ")
 
-instagrammfollowautomation(goOn, delay, url, scrolldistance)
 
+def disablefield():
+    if delayInt.get() == 1:
+        delayInput.configure(state='disabled')
+
+# ------------------------ GUI ------------------------------------
+
+
+israndom = tkinter.IntVar()
+delayInt = tkinter.IntVar()
+
+
+description = tkinter.Message(root, text="This is a Application using the Python library 'pyautogui' to automate the process of following the Followers of a specific Instagram account.", width="400")
+delayLabel = tkinter.Label(root, text="Verzögerung zwischen Buttonclicks:")
+delayInput = tkinter.Entry(root, textvariable=delayInt)
+randomdelaycheckbox = tkinter.Checkbutton(root, text="Random", variable=israndom, command=disablefield)
+urlLabel = tkinter.Label(root, text="URL des Instagram Accounts:")
+urlInput = tkinter.Entry(root)
+scrollLabel = tkinter.Label(root, text="Scrolldistanz")
+scrolldistanceInput = tkinter.Entry(root)
+opsystemLabel = tkinter.Label(root, text="Operating System(Mac, Winows, Linux,...)")
+opsystemInput = tkinter.Entry(root)
+submitbutton = tkinter.Button(root, text="Start", command=threading)
+statusfield = tkinter.Text(root)
+
+description.pack()
+delayLabel.pack()
+delayInput.pack()
+randomdelaycheckbox.pack()
+urlLabel.pack()
+urlInput.pack()
+scrollLabel.pack()
+scrolldistanceInput.pack()
+opsystemLabel.pack()
+opsystemInput.pack()
+submitbutton.pack()
+statusfield.pack(padx=50, pady=6)
+root.mainloop()
