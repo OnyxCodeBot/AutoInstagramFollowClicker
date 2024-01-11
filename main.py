@@ -10,7 +10,7 @@ from random import randrange
 
 root = tkinter.Tk()
 root.title("INSTAGRAM FOLLOW AUTOMATION")
-root.geometry('500x500')
+root.geometry('500x600')
 
 def threading():
     t1 = Thread(target=update_textbox)
@@ -65,7 +65,7 @@ def instagrammfollowautomation():
     if random == 0:
       sleepbetweenclicks = delayInput.get()
     else:
-      randomvalue = randrange(4, 7)
+      randomvalue = randrange(3, 8)
       sleepbetweenclicks = randomvalue
 
     web_url = urlInput.get()
@@ -123,10 +123,11 @@ def showvalue():
       print(sleepbetweenclicks)
 
 
-
 def disablefield():
-    if delayInt.get() == 1:
+    if israndom.get() == 1:
         delayInput.configure(state='disabled')
+    else:
+        delayInput.configure(state='normal')
 
 # ------------------------ GUI ------------------------------------
 
@@ -135,10 +136,11 @@ israndom = tkinter.IntVar()
 delayInt = tkinter.IntVar()
 
 
+
 description = tkinter.Message(root, text="This is a Application using the Python library 'pyautogui' to automate the process of following the Followers of a specific Instagram account.", width="400")
 delayLabel = tkinter.Label(root, text="Verzögerung zwischen Buttonclicks:")
 delayInput = tkinter.Entry(root, textvariable=delayInt)
-randomdelaycheckbox = tkinter.Checkbutton(root, text="Random", variable=israndom, command=disablefield)
+randomdelaycheckbox = tkinter.Checkbutton(root, text="Random(3-8 Sekunden)", variable=israndom, command=disablefield)
 urlLabel = tkinter.Label(root, text="URL des Instagram Accounts:")
 urlInput = tkinter.Entry(root)
 scrollLabel = tkinter.Label(root, text="Scrolldistanz")
@@ -146,18 +148,18 @@ scrolldistanceInput = tkinter.Entry(root)
 opsystemLabel = tkinter.Label(root, text="Operating System(Mac, Winows, Linux,...)")
 opsystemInput = tkinter.Entry(root)
 submitbutton = tkinter.Button(root, text="Start", command=threading)
-statusfield = tkinter.Text(root)
+statusfield = tkinter.Text(root, state='disabled')
 
 description.pack()
-delayLabel.pack()
-delayInput.pack()
-randomdelaycheckbox.pack()
-urlLabel.pack()
-urlInput.pack()
-scrollLabel.pack()
-scrolldistanceInput.pack()
-opsystemLabel.pack()
-opsystemInput.pack()
-submitbutton.pack()
+delayLabel.pack(pady=6)
+delayInput.pack(pady=6)
+randomdelaycheckbox.pack(pady=6)
+urlLabel.pack(pady=6)
+urlInput.pack(pady=6)
+scrollLabel.pack(pady=6)
+scrolldistanceInput.pack(pady=6)
+opsystemLabel.pack(pady=6)
+opsystemInput.pack(pady=6)
+submitbutton.pack(pady=6)
 statusfield.pack(padx=50, pady=6)
 root.mainloop()
