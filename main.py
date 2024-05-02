@@ -65,7 +65,7 @@ def instagrammfollowautomation():
     if random == 0:
       sleepbetweenclicks = delayInput.get()
     else:
-      randomvalue = randrange(3, 8)
+      randomvalue = randrange(4, 14)
       sleepbetweenclicks = randomvalue
 
     web_url = urlInput.get()
@@ -140,15 +140,16 @@ delayInt = tkinter.IntVar()
 description = tkinter.Message(root, text="This is a Application using the Python library 'pyautogui' to automate the process of following the Followers of a specific Instagram account.", width="400")
 delayLabel = tkinter.Label(root, text="Verzögerung zwischen Buttonclicks:")
 delayInput = tkinter.Entry(root, textvariable=delayInt)
-randomdelaycheckbox = tkinter.Checkbutton(root, text="Random(3-8 Sekunden)", variable=israndom, command=disablefield)
+randomdelaycheckbox = tkinter.Checkbutton(root, text="Random(3-10 Sekunden) Empfohlen", variable=israndom, command=disablefield)
 urlLabel = tkinter.Label(root, text="URL des Instagram Accounts:")
 urlInput = tkinter.Entry(root)
 scrollLabel = tkinter.Label(root, text="Scrolldistanz")
 scrolldistanceInput = tkinter.Entry(root)
-opsystemLabel = tkinter.Label(root, text="Operating System(Mac, Winows, Linux,...)")
+opsystemLabel = tkinter.Label(root, text="Operating System(Mac, Windows, Linux,...)")
 opsystemInput = tkinter.Entry(root)
 submitbutton = tkinter.Button(root, text="Start", command=threading)
 statusfield = tkinter.Text(root, state='disabled')
+
 
 description.pack()
 delayLabel.pack(pady=6)
@@ -163,3 +164,4 @@ opsystemInput.pack(pady=6)
 submitbutton.pack(pady=6)
 statusfield.pack(padx=50, pady=6)
 root.mainloop()
+
