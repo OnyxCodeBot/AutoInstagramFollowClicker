@@ -10,5 +10,3 @@ Automates the process of following every Follower of a specific Instagram accoun
 </ol>
 <h3>Known Errors and Limitations:</h3>
 - If the first valid Follow-Button is not visible even after the list was scrolled down the program will end
-
-## There is currently a error as https://www.instagram.com/AcountName/followers/ does not open the follower section any more 
