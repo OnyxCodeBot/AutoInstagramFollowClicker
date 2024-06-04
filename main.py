@@ -77,7 +77,9 @@ def instagrammfollowautomation():
     webbrowser.open(web_url + "/followers")
     update_textbox(statusfield, "Waiting for Site to load... 10sec")
     time.sleep(8)
-    pyautogui.moveTo(794, 416)
+
+    followersection = pyautogui.locateOnScreen('search_image/followersection.png')
+    clickfollowbutton(followersection, sleepbetweenclicks)
 
     while loopstopvar is True:
         try:
