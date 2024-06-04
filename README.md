@@ -10,3 +10,4 @@ Automates the process of following every Follower of a specific Instagram accoun
 </ol>
 <h3>Known Errors and Limitations:</h3>
 - If the first valid Follow-Button is not visible even after the list was scrolled down the program will end
+- The time between clicks or actions can be pretty long this is to try and avoid bot detection, if you want to shorten the time just adjust the time yourself and dont check the random option.
