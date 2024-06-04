@@ -9,5 +9,5 @@ Automates the process of following every Follower of a specific Instagram accoun
 <li>This was made for MacBook Pro with macOS Sonoma, but can be used on windows it just wasn't tested</li>
 </ol>
 <h3>Known Errors and Limitations:</h3>
-- If the first valid Follow-Button is not visible even after the list was scrolled down the program will end
+- If the first valid Follow-Button is not visible even after the list was scrolled down the program will end<br>
 - The time between clicks or actions can be pretty long this is to try and avoid bot detection, if you want to shorten the time just adjust the time yourself and dont check the random option.
